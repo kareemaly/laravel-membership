@@ -19,6 +19,9 @@ class CreateUserContactsTable extends Migration {
 
             $table->string('value');
             $table->string('type', 20);
+
+            $table->integer('user_info_id')->unsigned();
+            $table->foreign('user_info_id')->references('id')->on('ka_user_info')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
 	}
 

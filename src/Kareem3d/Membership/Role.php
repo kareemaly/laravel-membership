@@ -23,6 +23,15 @@ class Role extends Model {
 
     /**
      * @param $type
+     * @return bool|\Illuminate\Database\Eloquent\Model|static
+     */
+    public static function makeSureRoleExists($type)
+    {
+        return static::where('type', $type)->count() > 0 ? true : static::create(compact('type'));
+    }
+
+    /**
+     * @param $type
      * @return mixed
      */
     public static function getByType($type)

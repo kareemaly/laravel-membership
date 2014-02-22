@@ -56,7 +56,7 @@ class UserContact extends Model {
      */
     public function userInfo()
     {
-        return $this->belongsTo(UserInfo::getClass());
+        return $this->belongsTo(UserInfo::getClass(), 'user_info_id');
     }
 
 }

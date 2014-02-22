@@ -15,6 +15,16 @@ class UserInfo extends Model {
     public $timestamps = false;
 
     /**
+     * @var array
+     */
+    protected $with = array('account', 'contacts');
+
+    /**
+     * @var array
+     */
+    protected $appends = array('name');
+
+    /**
      * @return string
      */
     public function getNameAttribute()
@@ -46,7 +56,7 @@ class UserInfo extends Model {
      */
     public function contacts()
     {
-        return $this->hasMany(UserContact::getClass());
+        return $this->hasMany(UserContact::getClass(), 'user_info_id');
     }
 
 }
